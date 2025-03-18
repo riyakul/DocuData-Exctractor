@@ -103,7 +103,7 @@ Answer:"""
     with st.spinner("Loading response..."):
         from openai import OpenAI
         client = OpenAI(
-            api_key="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",  # <-- Replace with your own key
+            api_key="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",  # <-- Replace with your own key
             base_url="https://openrouter.ai/api/v1",
         )
         chat = client.chat.completions.create(
