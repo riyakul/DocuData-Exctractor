@@ -1,8 +1,18 @@
+import os
+from dotenv import load_dotenv  # Import load_dotenv from python-dotenv
 import streamlit as st
 import json
 import re
 from pymongo import MongoClient
 from bson import ObjectId
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Retrieve the API key from the environment variable loaded from .env
+api_key = os.environ.get("DEEPSEEK_API_KEY")
+if not api_key:
+    raise ValueError("API key is not set in the .env file!")
 
 # =============================================================================
 # Helper Functions
@@ -103,7 +113,7 @@ Answer:"""
     with st.spinner("Loading response..."):
         from openai import OpenAI
         client = OpenAI(
-            api_key="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",  # <-- Replace with your own key
+            api_key=api_key,  # Using the API key loaded from .env
             base_url="https://openrouter.ai/api/v1",
         )
         chat = client.chat.completions.create(
@@ -172,8 +182,7 @@ if doc_source == "MongoDB":
     st.sidebar.markdown("### MongoDB Document Selection")
     try:
         MONGO_CONN_STR = (
-            "mongodb+srv://riyamkulkarni:sGStH59h0EPjdgcc@jsoncluster.yjuh1.mongodb.net/"
-            "?retryWrites=true&w=majority&appName=JsonCluster"
+            "mongodb+srv://riyamkulkarni:sGStH59h0EPjdgcc@jsoncluster.yjuh1.mongodb.net/?retryWrites=true&w=majority&appName=JsonCluster"
         )
         DATABASE_NAME = "myAtlasDB"
         client = MongoClient(MONGO_CONN_STR)
