@@ -8,10 +8,18 @@ from bson import ObjectId
 import gridfs
 
 # Load environment variables from .env file
-load_dotenv()
-api_key = os.environ.get("DEEPSEEK_API_KEY")
-if not api_key:
-    raise ValueError("API key is not set in the .env file!")
+# load_dotenv()
+# api_key = os.environ.get("DEEPSEEK_API_KEY")
+# if not api_key:
+#     raise ValueError("API key is not set in the .env file!")
+
+#SECRETS METHOD
+try:
+    api_key = st.secrets["DEEPSEEK_API_KEY"]
+except KeyError:
+    st.error("API key is not set in the secrets!")
+    st.stop()
+
 
 # =============================================================================
 # Helper Functions
