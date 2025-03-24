@@ -1649,9 +1649,7 @@ st.markdown("<h1 style='font-size: 3em; text-align: center;'>DocuData Extractor<
 st.markdown("<hr>", unsafe_allow_html=True)
 
 # Always load the document from GridFS using a fixed filename.
-MONGO_CONN_STR = (
-    "mongodb+srv://riyamkulkarni:sGStH59h0EPjdgcc@jsoncluster.yjuh1.mongodb.net/"
-    "?retryWrites=true&w=majority&appName=JsonCluster"
+MONGO_CONN_STR = ("mongodb+srv://riyamkulkarni:kJe64aySnaT0vzPV@jsoncluster.yjuh1.mongodb.net/?retryWrites=true&w=majority&appName=JsonCluster"
 )
 DATABASE_NAME = "CombinedJson"
 try:
