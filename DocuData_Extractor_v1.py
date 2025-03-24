@@ -1660,7 +1660,7 @@ except Exception as e:
     st.error(f"Error connecting to MongoDB/ GridFS: {e}")
     st.stop()
 
-fixed_filename = "D:\\Augrade\\codes_db_final (3).json"
+fixed_filename = "codes_db_final.json"
 if "current_document" not in st.session_state:
     try:
         grid_file = fs.find_one({"filename": fixed_filename})
